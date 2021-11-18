@@ -11,6 +11,7 @@
   "author": "Wenji Billow, Lulin Shen, Sofia Bonakdar, Elham Ahmadzadeh",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest": "^27.3.1",
     "supertest": "^6.1.6"
