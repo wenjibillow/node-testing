@@ -1,115 +1,14 @@
-const productsData = [
-  { id: 123, name: 'Bow', price: 10 },
-  { id: '66ed22217e81', name: 'jeans', price: 10 },
-  { id: '66ed22217e82', name: 'top', price: 3 },
-  { id: '66ed22217e83', name: 'dress', price: 5 }
-]
-const usersData = [
-  { login: 'secret', name: 'Patrik' },
-  { login: 'password', name: 'Samuel' },
-  { login: 'tyst', name: 'Simeon' }
-]
+const products = [];
 
-const productsData = [
-  { id: 123, name: 'Bow', price: 10 },
-  { id: '66ed22217e81', name: 'jeans', price: 10 },
-  { id: '66ed22217e82', name: 'top', price: 3 },
-  { id: '66ed22217e83', name: 'dress', price: 5 }
-]
-
-const cartsData = [
-  {
-    userLogin: 'secret',
-    cart: [
-      { productId: '66ed22217e81', amount: 2 },
-      { productId: '66ed22217e83', amount: 1 }
-    ]
-  },
-  {
-    userLogin: 'password',
-    cart: [
-      { productId: '66ed22217e83', amount: 2 },
-      { productId: '66ed22217e82', amount: 13 }
-    ]
-  }
-]
-
-class MockCRUD {
-  constructor(data) {
-    this.data = data
-  }
-
-  async getAll() {
-    return this.data
-  }
-
-  async getOne(input) {
-    if (input.userLogin)
-      return this.data.find((item) => item.userLogin === input.userLogin)
-    return this.data.find((item) => item.name === input)
-  }
-
-  async createOne(data) {
-    try {
-      this.data.push(data)
-      return this.data
-    } catch (err) {
-      throw err
-    }
-  }
-
-  async modifyOrder(input) {
-    try {
-      this.data.forEach((cart) => {
-        if (cart.userLogin === input.userLogin) {
-          if (
-            cart.cart.find((product) => {
-              product.productId === input.productId
-            })
-          ) {
-            cart.cart.indexOf(product.productId === input.productId).product
-              .amount++
-          } else {
-            cart.cart.push({ productId: input.productId, amount: 1 })
-          }
-        }
-      })
-      return this.data
-    } catch (err) {
-      throw err
-    }
-  }
-  async deleteOne(input) {
-    this.data = this.data.filter((item) => {
-      return item.input !== input.name
-    })
-    return (this.deleted += 1)
-  }
-
-  async deleteOrder(input) {
-    try {
-      this.data.forEach((order) => {
-        if (order.userLogin === input.userLogin) {
-          order.cart.splice(
-            order.cart.indexOf(order.cart.productId === input.productId),
-            1
-          )
-        }
-      })
-      return this.data
-    } catch (err) {
-      throw err
-    }
-  }
+function getProducts() {
+  return products;
+}
+function getProduct(id) {
+  return products.find((product) => product.id === id);
 }
 
-const createMockDb = () => {
-  const products = new MockCRUD(productsData)
-  const users = new MockCRUD(usersData)
-  const carts = new MockCRUD(cartsData)
-  return { products, users, carts }
+function addProduct(product) {
+  products.push(product);
 }
 
-const mockdbDriver = () => {
-  return createMockDb()
-}
+module.exports = { addProduct, getProducts, getProduct };
