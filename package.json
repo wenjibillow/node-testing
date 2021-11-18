@@ -1,0 +1,18 @@
+{
+  "name": "node-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "author": "Wenji Billow, Lulin Shen, Sofia Bonakdar, Elham Ahmadzadeh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
+  }
+}
