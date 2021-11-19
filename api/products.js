@@ -1,3 +1,4 @@
+const app = require("../app");
 const database = require("../database");
 
 module.exports = function (app) {
@@ -17,6 +18,15 @@ module.exports = function (app) {
   app.get("/api/products/:id", function (req, res) {
     const product = database.getProduct(req.params.id);
     res.json(product);
+  });
+
+  app.put("/api/products/:id", function (req, res) {
+    const editedProduct = {
+      id: req.params.id,
+      name: req.body.name,
+      price: req.body.price,
+    };
+    res.json(database.updateProduct(editedProduct));
   });
 };
 
