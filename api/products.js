@@ -28,18 +28,8 @@ module.exports = function (app) {
     };
     res.json(database.updateProduct(editedProduct));
   });
+
+  app.delete("/api/products/:id", function (req, res) {
+    res.json(database.deleteProduct(req.params.id));
+  });
 };
-
-/* 
-GET
-/api/products/
-GET
-/api/products/:id
-POST
-/api/products/
-PUT
-/api/products/:id
-DELETE
-/api/products/:id
-
- */

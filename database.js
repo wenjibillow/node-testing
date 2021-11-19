@@ -20,4 +20,10 @@ function updateProduct(product) {
 function deleteProduct(id) {
   return products.filter((p) => p.id === id);
 }
-module.exports = { addProduct, getProducts, getProduct, updateProduct };
+module.exports = {
+  addProduct,
+  getProducts,
+  getProduct,
+  updateProduct,
+  deleteProduct,
+};

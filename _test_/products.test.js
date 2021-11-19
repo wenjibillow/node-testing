@@ -37,3 +37,12 @@ it("uppdate product", async () => {
   expect(response.status).toBe(200);
   expect(response.body).toStrictEqual(editedProduct);
 });
+
+it("delete product", async () => {
+  const product = { id: "123", name: "Tshirt", price: 1000 };
+  const res = await request.post("/api/products").send(product);
+  expect(res.status).toBe(200);
+  const response = await request.delete("/api/products/" + product.id);
+  expect(response.status).toBe(200);
+  expect([]);
+});
