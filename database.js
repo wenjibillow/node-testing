@@ -1,6 +1,6 @@
 let products = [];
 let users = [];
-let carts = [];
+let cart = [];
 
 //products
 function getProducts() {
@@ -41,23 +41,22 @@ function deleteUser(login) {
 
 //carts
 
-function getCart(userLogin) {
-  return carts.find((cart) => cart.userLogin === userLogin);
+function getCart() {
+  return cart;
 }
 
-function addCart(userLogin) {
-  carts.push(userLogin);
+function addCartItem(cartItem) {
+  cart.push(cartItem);
 }
 
-function updateCart(userLogin, item) {
-  const cart = carts.find((cart) => cart.userLogin === userLogin);
-  cart.filter((i) => i.id === item.id);
-  cart.push(item);
+function updateCart(addedItem) {
+  cart[cart.findIndex((i) => i.productId == addedItem.productId)].amount =
+    addedItem.amount;
+  return cart;
 }
 
-function deleteCart(userLogin, itemId) {
-  const cart = carts.find((cart) => cart.userLogin === userLogin);
-  cart.filter((cart) => cart.id === itemId);
+function deleteCart(itemId) {
+  return cart.filter((cart) => cart.id === itemId);
 }
 
 module.exports = {
@@ -71,7 +70,7 @@ module.exports = {
   addUser,
   deleteUser,
   getCart,
-  addCart,
+  addCartItem,
   updateCart,
   deleteCart,
 };
