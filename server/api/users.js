@@ -8,6 +8,7 @@ module.exports = function (app) {
 
   app.post("/api/users", function (req, res) {
     const user = {
+      name: req.body.name,
       login: req.body.login,
     };
     database.addUser(user);
