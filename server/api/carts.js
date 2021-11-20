@@ -1,5 +1,5 @@
 const app = require("../app");
-const database = require("../server/database");
+const database = require("../database");
 
 module.exports = function (app) {
   app.get("/api/carts/:userLogin", function (req, res) {
