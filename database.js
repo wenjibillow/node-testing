@@ -32,7 +32,7 @@ function getUsers() {
 function getUser(login) {
   return users.find((user) => user.login === login);
 }
-function addUser() {
+function addUser(user) {
   users.push(user);
 }
 function deleteUser(login) {
