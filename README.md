@@ -1,5 +1,5 @@
 # node-testing
 
-Super Test
+Supertest
 Jest
 Node.js Express
