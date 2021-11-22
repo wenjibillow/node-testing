@@ -2,10 +2,6 @@ let products = [];
 let users = [];
 let cart = [];
 
-/* const emptyData = function emptyProductArray() {
-  return (products = []);
-}; */
-
 //products
 function getProducts() {
   return products;
@@ -54,9 +50,13 @@ function addCartItem(cartItem) {
 }
 
 function updateCart(addedItem) {
-  cart[cart.findIndex((i) => i.productId == addedItem.productId)].amount =
-    addedItem.amount;
+  cart = cart.filter((i) => i.id !== addedItem.id);
+  cart.push(addedItem);
   return cart;
+
+  /*   cart[cart.findIndex((i) => i.productId == addedItem.productId)].amount =
+    addedItem.amount;
+  return cart; */
 }
 
 function deleteCart(itemId) {
