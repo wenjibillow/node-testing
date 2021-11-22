@@ -2,6 +2,10 @@ let products = [];
 let users = [];
 let cart = [];
 
+/* const emptyData = function emptyProductArray() {
+  return (products = []);
+}; */
+
 //products
 function getProducts() {
   return products;
@@ -15,9 +19,9 @@ function addProduct(product) {
 }
 
 function updateProduct(product) {
-  products = products.filter((p) => p.id === product.id);
+  products = products.filter((p) => p.id !== product.id);
   products.push(product);
-  return product;
+  return products;
 }
 
 function deleteProduct(id) {

@@ -15,6 +15,7 @@ module.exports = function (app) {
     database.addProduct(product);
     res.json();
   });
+
   app.get("/api/products/:id", function (req, res) {
     const product = database.getProduct(req.params.id);
     res.json(product);

@@ -35,7 +35,7 @@ it("uppdate product", async () => {
     .put("/api/products/" + product.id)
     .send(editedProduct);
   expect(response.status).toBe(200);
-  expect(response.body).toStrictEqual(editedProduct);
+  expect(response.body).toStrictEqual([editedProduct]);
 });
 
 it("delete product", async () => {
