@@ -21,6 +21,6 @@ module.exports = function (app) {
   });
 
   app.delete("/api/users/:login", function (req, res) {
-    res.json(database.deleteUser(req.paramslogin));
+    res.json(database.deleteUser(req.params.login));
   });
 };

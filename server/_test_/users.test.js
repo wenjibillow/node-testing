@@ -8,7 +8,7 @@ it("get users", async () => {
   expect(response.body).toStrictEqual([]);
 });
 it("add one user", async () => {
-  const user = { 
+  const user = {
     login: "123",
     name: "eli",
   };
@@ -19,10 +19,10 @@ it("add one user", async () => {
   expect(response.body).toStrictEqual([user]);
 });
 it("get one user", async () => {
-  const user = { 
-  login: "123",
-  name: "eli",
-};
+  const user = {
+    login: "123",
+    name: "eli",
+  };
   const response = await request.post("/api/users").send(user);
   expect(response.status).toBe(200);
   const res = await request.get("/api/users/" + user.login);
@@ -31,13 +31,13 @@ it("get one user", async () => {
 });
 
 it("delete one user", async () => {
-  const user = { 
+  const user = {
     login: "123",
     name: "eli",
   };
   const res = await request.post("/api/users").send(user);
   expect(res.status).toBe(200);
-  const response = await request.delete("/api/users/:login" + user.login);
+  const response = await request.delete("/api/users/" + user.login);
   expect(response.status).toBe(200);
   expect([]);
 });
