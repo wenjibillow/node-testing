@@ -64,7 +64,7 @@ function updateCart(addedItem) {
 }
 
 function deleteCart(itemId) {
-  cart = cart.filter((cart) => cart.id !== itemId);
+  cart = cart.filter((item) => item.id !== itemId.id);
   return cart;
 }
 

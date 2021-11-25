@@ -47,8 +47,7 @@ it("delete product", async () => {
   const response = await request.delete("/api/products/" + product.id);
   expect(response.status).toBe(200);
 
-  var res = await request.get("/api/products");
-  expect(res.status).toBe(200);
+  let res = await request.get("/api/products");
   expect(res.body).toStrictEqual([]);
 
   res = await request.get("/api/products/" + product.id);
