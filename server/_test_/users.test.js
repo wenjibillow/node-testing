@@ -39,5 +39,11 @@ it("delete one user", async () => {
   expect(res.status).toBe(200);
   const response = await request.delete("/api/users/" + user.login);
   expect(response.status).toBe(200);
-  expect([]);
+
+  var resGet = await request.get("/api/users");
+  expect(resGet.status).toBe(200);
+  expect(resGet.body).toStrictEqual([]);
+
+  responseGet = await request.get("/api/users/" + user.id);
+  expect(responseGet.status).toBe(404);
 });

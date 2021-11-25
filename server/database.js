@@ -2,6 +2,12 @@ let products = [];
 let users = [];
 let cart = [];
 
+function cleanUp() {
+  products = [];
+  users = [];
+  cart = [];
+}
+
 //products
 function getProducts() {
   return products;
@@ -21,7 +27,8 @@ function updateProduct(product) {
 }
 
 function deleteProduct(id) {
-  return products.filter((product) => product.id === id);
+  products = products.filter((product) => product.id !== id);
+  return products;
 }
 
 //users
@@ -36,7 +43,8 @@ function addUser(user) {
   users.push(user);
 }
 function deleteUser(login) {
-  return users.filter((user) => user.login === login);
+  users = users.filter((user) => user.login !== login);
+  return users;
 }
 
 //carts
@@ -50,17 +58,14 @@ function addCartItem(cartItem) {
 }
 
 function updateCart(addedItem) {
-  cart = cart.filter((i) => i.id !== addedItem.id);
+  cart = cart.filter((item) => item.id !== addedItem.id);
   cart.push(addedItem);
   return cart;
-
-  /*   cart[cart.findIndex((i) => i.productId == addedItem.productId)].amount =
-    addedItem.amount;
-  return cart; */
 }
 
 function deleteCart(itemId) {
-  return cart.filter((cart) => cart.id === itemId);
+  cart = cart.filter((cart) => cart.id !== itemId);
+  return cart;
 }
 
 module.exports = {
@@ -77,4 +82,5 @@ module.exports = {
   addCartItem,
   updateCart,
   deleteCart,
+  cleanUp,
 };

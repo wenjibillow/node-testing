@@ -26,6 +26,7 @@ it("uppdate product in the cart", async () => {
     productId: "123",
     amount: 49,
   };
+
   const res = await request.post("/api/carts/:userLogin/").send(cartItem);
   expect(res.status).toBe(200);
   const editedCartItem = {

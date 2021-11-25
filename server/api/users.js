@@ -17,7 +17,10 @@ module.exports = function (app) {
 
   app.get("/api/users/:login", function (req, res) {
     const user = database.getUser(req.params.login);
-    res.json(user);
+    if (user) {
+      return res.json(user);
+    }
+    return res.status(404).json();
   });
 
   app.delete("/api/users/:login", function (req, res) {
